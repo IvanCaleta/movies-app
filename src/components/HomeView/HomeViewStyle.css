@@ -1,0 +1,12 @@
+.homeView {
+    background-color: #3B4146;
+}
+
+.homeTitle {
+    color: #F5F5F5  ; 
+    font-size: 2.5em;
+    padding-top: 10px;
+    margin-bottom: 20px; 
+    text-align: center; 
+    font-weight: bold;
+}

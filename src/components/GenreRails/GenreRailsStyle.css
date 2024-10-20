@@ -1,0 +1,41 @@
+.genre-rails {
+    margin-top: 30px;
+    padding: 10px;
+    max-width: 100%;
+    overflow-y: auto;
+}
+
+.genre-section {
+    margin-bottom: 100px;
+}
+
+.genre-item {
+    margin-bottom: 10px;
+}
+
+.genre {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5em; 
+    width: 100%; 
+}
+
+.genre:hover {
+    background-color: #555;
+    border-color: white;
+}
+
+.genre:focus {
+    outline: none; 
+}
+
+.genre.selected {
+    background-color: #b7eb3ee2 ; 
+    font-weight: bold;
+    color: black;
+}
