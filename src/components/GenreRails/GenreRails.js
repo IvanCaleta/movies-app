@@ -17,14 +17,16 @@ const SingleGenreRail = ({ id, name, handleClickOnGenre, selected, index, genreR
     );
 };
 
-const GenreRails = ({ selectedGenre, setSelectedGenre }) => {
+const GenreRails = ({ selectedGenre, setSelectedGenre, selectedMovie, setSelectedMovie }) => {
     const [allGenres, setAllGenres] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const [isManualMovieSelection, setIsManualMovieSelection] = useState(false);
     const genreRefs = useRef([]);
 
     const handleClickOnGenre = (genreId, index) => {
         setSelectedIndex(index);
         setSelectedGenre(genreId);
+        setIsManualMovieSelection(false);
     };
 
     const handleKeyDown = useCallback((event) => {
@@ -33,11 +35,13 @@ const GenreRails = ({ selectedGenre, setSelectedGenre }) => {
             const nextIndex = (selectedIndex + 1) % allGenres.length;
             setSelectedIndex(nextIndex);
             setSelectedGenre(allGenres[nextIndex].id);
+            setIsManualMovieSelection(false);
         } else if (event.key === 'ArrowUp' || event.key === 'w' || event.key === 'Backspace') {
             event.preventDefault();
             const prevIndex = (selectedIndex - 1 + allGenres.length) % allGenres.length;
             setSelectedIndex(prevIndex);
             setSelectedGenre(allGenres[prevIndex].id);
+            setIsManualMovieSelection(false);
         }
     }, [allGenres, selectedIndex, setSelectedGenre]);
 
@@ -63,7 +67,7 @@ const GenreRails = ({ selectedGenre, setSelectedGenre }) => {
 
             currentElement.scrollIntoView({
                 behavior: 'smooth',
-                block: 'center',
+                block: 'start',
             });
         }
 
@@ -74,21 +78,30 @@ const GenreRails = ({ selectedGenre, setSelectedGenre }) => {
     }, [allGenres]);
 
     return (
-            <div className="genre-rails">
-                {allGenres.map((genre, index) => (
-                    <div key={index} className="genre-section">
-                        <SingleGenreRail
-                            name={genre.name}
-                            id={genre.id}
-                            handleClickOnGenre={handleClickOnGenre}
-                            selected={genre.id === selectedGenre}
-                            index={index}
-                            genreRef={(el) => (genreRefs.current[index] = el)}
-                        />
-                        <MovieList genreId={genre.id} />
-                    </div>
-                ))}
-            </div>
+        <div className="genre-rails">
+            {allGenres.map((genre, index) => (
+                <div key={index} className="genre-section">
+                    <SingleGenreRail
+                        name={genre.name}
+                        id={genre.id}
+                        handleClickOnGenre={handleClickOnGenre}
+                        selected={genre.id === selectedGenre}
+                        index={index}
+                        genreRef={(el) => (genreRefs.current[index] = el)}
+                    />
+                    <MovieList
+                        genreId={genre.id}
+                        isGenreSelected={genre.id === selectedGenre}
+                        setSelectedGenre={setSelectedGenre}
+                        selectedMovie={selectedMovie}
+                        setSelectedMovie={setSelectedMovie}
+                        isManualSelection={isManualMovieSelection}
+                        setIsManualSelection={setIsManualMovieSelection}
+                        changeGenreIndex={() => setSelectedIndex(index)}
+                    />
+                </div>
+            ))}
+        </div>
     );
 };
 

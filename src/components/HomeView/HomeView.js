@@ -4,14 +4,19 @@ import './HomeViewStyle.css'
 
 const HomeView = () => {
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   return (
     <div className="homeView">
       <div className="homeTitle">
-        Movies
+        Home
       </div>
-      <hr/>
-      <GenreRails selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />
+      <hr />
+      <GenreRails
+        selectedGenre={selectedGenre}
+        setSelectedGenre={setSelectedGenre}
+        selectedMovie={selectedMovie}
+        setSelectedMovie={setSelectedMovie} />
     </div>
   )
 }
