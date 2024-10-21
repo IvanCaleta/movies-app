@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { getAllMoviesByGenre } from '../../API';
 import './MovieListStyle.css';
+import { useNavigate } from 'react-router-dom';
 
 const SingleMovieItem = ({ movie, genreId, selected, handleMovieClick, index, movieRef }) => {
+    const navigate = useNavigate();
 
     const additionalContent = <div className='extra-info'>
         <div>
@@ -12,7 +14,7 @@ const SingleMovieItem = ({ movie, genreId, selected, handleMovieClick, index, mo
             {movie.vote_average.toFixed(1)} / 10
         </div>
         <div className='details-button'>
-            <button>
+            <button onClick={() => navigate('/details/' + movie.id)}>
                 Details
             </button>
         </div>
