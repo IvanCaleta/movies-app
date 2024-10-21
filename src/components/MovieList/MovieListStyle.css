@@ -3,7 +3,7 @@
     flex-wrap: nowrap; 
     overflow-x: auto;
     padding: 10px;
-    gap: 10px;
+    gap: 50px;
 }
 
 .movie-list::-webkit-scrollbar {
@@ -11,16 +11,56 @@
 }
 
 .movie-item {
-    min-width: 150px;
+    min-width: 300px;
     background-color: #222;
     border-radius: 10px;
     padding: 10px;
     color: white;
     text-align: center;
     transition: transform 0.3s ease;
+    max-height: 550px;
+}
+
+.movie-item.selected {
+    border-color: white;
+    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5); 
+    transform: scale(1.02); 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 600px; 
+}
+
+.movie-item.selected div {
+    margin: 10px 0; 
+}
+
+.movie-item div {
+    font-size: 1.15em;
+    font-style: italic; 
+}
+
+.movie-item .movie-title {
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.movie-item .rate{
+    color: gold;
+}
+
+button {
+    padding: 10px 20px; 
+    font-size: 1em; 
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #555; 
 }
 
 .movie-item:hover {
-    transform: scale(1.05);
     cursor: pointer;
 }
