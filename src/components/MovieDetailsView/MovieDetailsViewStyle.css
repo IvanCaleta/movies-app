@@ -1,0 +1,116 @@
+body,
+html {
+    background-color: #3B4146;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.details-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2em;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.details-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.details-section img {
+    width: 15em;
+    margin-right: 2em;
+    border-radius: 8px;
+}
+
+.textInfo {
+    flex: 1;
+}
+
+.textInfo div {
+    color: #F5F5F5;
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+}
+
+.movie-title {
+    font-size: 3em;
+    font-weight: bold;
+    color: #F5F5F5;
+    text-align: left;
+    margin-bottom: 0.5em;
+}
+
+.overview {
+    font-size: 1.6em;
+    color: #D3D3D3;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    margin-bottom: 1em;
+}
+
+.textInfo .rate {
+    margin-top: 1em;
+    color: gold;
+    font-size: 1.5em;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+    margin-bottom: 0.5em;
+}
+
+.star-icon {
+    color: gold;
+    font-size: 1.5em;
+    margin-right: 0.2em;
+}
+
+.textInfo .extra-info {
+    font-size: 1.3em;
+    color: #F5F5F5;
+    margin-bottom: 0.5em;
+}
+
+.button-container {
+    margin-top: 2em;
+}
+
+.button-container button {
+    background-color: #5A6268;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5em 1.5em;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #6C757D;
+}
+
+.icon {
+    margin-right: 0.5em;
+}
+
+.watch-button {
+    background-color: #28A745;
+}
+
+.watch-button:hover {
+    background-color: #218838;
+}
+
+.bookmark-button {
+    background-color: #FFC107;
+}
+
+.bookmark-button:hover {
+    background-color: #E0A800;
+}

@@ -8,7 +8,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/details" element={<MovieDetailsPage />} />
+          <Route path="/details/:movieId" element={<MovieDetailsPage />} />
           <Route path="/play" element={<PlayScreenPage />} />
           <Route path="*" element={<SplashPage />} />
         </Routes>
