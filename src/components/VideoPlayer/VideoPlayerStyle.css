@@ -1,0 +1,11 @@
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 1em;
+  }
+
+  video {
+    max-height: 30em; 
+    width: 100%;
+    height: auto;
+}

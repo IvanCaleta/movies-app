@@ -1,6 +1,6 @@
 import HomeView from "./HomeView/HomeView";
 import MovieDetailsView from "./MovieDetailsView/MovieDetailsView";
-import PlayView from "./PlayView/PlayView";
+import VideoPlayer from "./VideoPlayer/VideoPlayer";
 import GenreRails from "./GenreRails/GenreRails";
 import MovieList, { SingleMovieItem } from "./MovieList/MovieList";
 import NavigationBar from "./NavigationBar/NavigationBar";
@@ -10,7 +10,7 @@ import SplashView from "./SplashView/SplashView";
 export{
     HomeView,
     MovieDetailsView,
-    PlayView,
+    VideoPlayer,
     GenreRails,
     MovieList,
     NavigationBar,
