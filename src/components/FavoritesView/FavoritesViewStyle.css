@@ -1,0 +1,11 @@
+.favorites-container{
+    margin-top: 3em;
+}
+
+.no-selected{
+    font-size: 2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f5f5f5;
+    text-align: center;
+    margin-top: 1em;
+}

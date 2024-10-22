@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { HomePage, MovieDetailsPage, PlayScreenPage, SplashPage } from "./pages";
+import { HomePage, MovieDetailsPage, FavoritesPage, PlayScreenPage, SplashPage } from "./pages";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/details/:movieId" element={<MovieDetailsPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/play" element={<PlayScreenPage />} />
           <Route path="*" element={<SplashPage />} />
         </Routes>

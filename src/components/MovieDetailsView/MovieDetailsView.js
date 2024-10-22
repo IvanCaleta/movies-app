@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { getMovieDetails } from '../../API';
 import './MovieDetailsViewStyle.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFavorites, checkFavorites, removeFromFavorites } from '../../redux/bookmarkSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faStar, faBookmark as SolidBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as RegularBookmark } from '@fortawesome/free-regular-svg-icons';
 
 const MovieDetailsView = ({ movieId }) => {
   const [movieDetails, setMovieDetails] = useState(null);
+  const isInFavorites = useSelector(checkFavorites(movieId));
+  const dispatch = useDispatch();
+
+  const handleAddOrRemoval = () => {
+    if (!isInFavorites) {
+      dispatch(addToFavorites(movieDetails));
+    }
+    else {
+      dispatch(removeFromFavorites(movieId))
+    }
+  }
 
   useEffect(() => {
     getMovieDetails(movieId)
@@ -34,7 +50,10 @@ const MovieDetailsView = ({ movieId }) => {
             <hr />
             <div className="overview">{movieDetails.overview}</div>
             <div className="rate">
-              <span className="star-icon">★</span>
+            <FontAwesomeIcon
+                  icon={faStar}
+                  className="icon"
+                />
               {movieDetails.vote_average.toFixed(2)} / 10 (
               {movieDetails.vote_count} votes)
             </div>
@@ -52,10 +71,18 @@ const MovieDetailsView = ({ movieId }) => {
             </div>
             <div className="button-container">
               <button className="watch-button">
-                <span className="icon">▶</span> Watch
+              <FontAwesomeIcon
+                  icon={faPlay}
+                  className="icon"
+                />
+                Watch
               </button>
-              <button className="bookmark-button">
-                <span className="icon">🔖</span> Bookmark
+              <button className="bookmark-button" onClick={() => handleAddOrRemoval()}>
+                <FontAwesomeIcon
+                  icon={isInFavorites ? SolidBookmark : RegularBookmark}
+                  className="icon"
+                />
+                {isInFavorites ? "Remove from favorites" : "Add to favorites"}
               </button>
             </div>
           </div>
