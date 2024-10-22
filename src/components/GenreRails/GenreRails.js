@@ -58,6 +58,9 @@ const GenreRails = ({ selectedGenre, setSelectedGenre, selectedMovie, setSelecte
                 setAllGenres(response.data.genres);
                 setSelectedGenre(response.data.genres[0].id);
             }
+        }).catch(error => {
+            setAllGenres([]);
+            console.error(error)
         });
     }, [setSelectedGenre]);
 
@@ -78,29 +81,35 @@ const GenreRails = ({ selectedGenre, setSelectedGenre, selectedMovie, setSelecte
     }, [allGenres]);
 
     return (
-        <div className="genre-rails">
-            {allGenres.map((genre, index) => (
-                <div key={index} className="genre-section">
-                    <SingleGenreRail
-                        name={genre.name}
-                        id={genre.id}
-                        handleClickOnGenre={handleClickOnGenre}
-                        selected={genre.id === selectedGenre}
-                        index={index}
-                        genreRef={(el) => (genreRefs.current[index] = el)}
-                    />
-                    <MovieList
-                        genreId={genre.id}
-                        isGenreSelected={genre.id === selectedGenre}
-                        setSelectedGenre={setSelectedGenre}
-                        selectedMovie={selectedMovie}
-                        setSelectedMovie={setSelectedMovie}
-                        isManualSelection={isManualMovieSelection}
-                        setIsManualSelection={setIsManualMovieSelection}
-                        changeGenreIndex={() => setSelectedIndex(index)}
-                    />
+        <div>
+            {allGenres.length ? <div className="genre-rails">
+                {allGenres.map((genre, index) => (
+                    <div key={index} className="genre-section">
+                        <SingleGenreRail
+                            name={genre.name}
+                            id={genre.id}
+                            handleClickOnGenre={handleClickOnGenre}
+                            selected={genre.id === selectedGenre}
+                            index={index}
+                            genreRef={(el) => (genreRefs.current[index] = el)}
+                        />
+                        <MovieList
+                            genreId={genre.id}
+                            isGenreSelected={genre.id === selectedGenre}
+                            setSelectedGenre={setSelectedGenre}
+                            selectedMovie={selectedMovie}
+                            setSelectedMovie={setSelectedMovie}
+                            isManualSelection={isManualMovieSelection}
+                            setIsManualSelection={setIsManualMovieSelection}
+                            changeGenreIndex={() => setSelectedIndex(index)}
+                        />
+                    </div>
+                ))}
+            </div> :
+                <div className='genres-not-loaded'>
+                    Genres not loaded correctly
                 </div>
-            ))}
+            }
         </div>
     );
 };

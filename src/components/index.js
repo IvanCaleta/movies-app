@@ -5,6 +5,7 @@ import GenreRails from "./GenreRails/GenreRails";
 import MovieList, { SingleMovieItem } from "./MovieList/MovieList";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import FavoritesView from "./FavoritesView/FavoritesView";
+import SplashView from "./SplashView/SplashView";
 
 export{
     HomeView,
@@ -15,4 +16,5 @@ export{
     NavigationBar,
     FavoritesView,
     SingleMovieItem,
+    SplashView,
 }

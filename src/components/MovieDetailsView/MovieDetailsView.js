@@ -36,7 +36,7 @@ const MovieDetailsView = ({ movieId }) => {
 
   return (
     <div className="details-container">
-      {movieDetails && (
+      {movieDetails ? (
         <div className="details-section">
           <img
             src={process.env.REACT_APP_IMAGE_PATH + movieDetails.poster_path}
@@ -50,10 +50,10 @@ const MovieDetailsView = ({ movieId }) => {
             <hr />
             <div className="overview">{movieDetails.overview}</div>
             <div className="rate">
-            <FontAwesomeIcon
-                  icon={faStar}
-                  className="icon"
-                />
+              <FontAwesomeIcon
+                icon={faStar}
+                className="icon"
+              />
               {movieDetails.vote_average.toFixed(2)} / 10 (
               {movieDetails.vote_count} votes)
             </div>
@@ -71,7 +71,7 @@ const MovieDetailsView = ({ movieId }) => {
             </div>
             <div className="button-container">
               <button className="watch-button">
-              <FontAwesomeIcon
+                <FontAwesomeIcon
                   icon={faPlay}
                   className="icon"
                 />
@@ -87,7 +87,11 @@ const MovieDetailsView = ({ movieId }) => {
             </div>
           </div>
         </div>
-      )}
+      ) :
+        <div className='details-not-found'>
+          Movie details not found
+        </div>
+      }
     </div>
   );
 };
