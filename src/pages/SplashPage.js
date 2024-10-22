@@ -1,8 +1,12 @@
 import React from 'react'
+import { NavigationBar, SplashView } from '../components'
 
 const SplashPage = () => {
   return (
-    <div>SplashPage</div>
+    <div>
+      <NavigationBar hideSearch />
+      <SplashView />
+    </div>
   )
 }
 

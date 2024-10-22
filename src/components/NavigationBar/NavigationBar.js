@@ -33,14 +33,14 @@ const NavigationBar = ({ hideSearch, currentPage }) => {
                     <li>
                         <button
                             onClick={() => navigate('/home')}
-                            className={currentPage.pathname === '/home' ? 'active' : ''}>
+                            className={currentPage?.pathname === '/home' ? 'active' : ''}>
                             Home
                         </button>
                     </li>
                     <li>
                         <button
                             onClick={() => navigate('/favorites')}
-                            className={currentPage.pathname === '/favorites' ? 'active' : ''}>
+                            className={currentPage?.pathname === '/favorites' ? 'active' : ''}>
                             Favorites
                         </button>
                     </li>
@@ -63,6 +63,9 @@ const NavigationBar = ({ hideSearch, currentPage }) => {
                     className='search-input'
                     value={currentSearchValue}
                     onChange={(e) => modifySearchValue(e.target.value)}
+                    onKeyDown={(e) => {
+                        e.stopPropagation(); 
+                    }}
                 />
                 <button className='clear-search-button' onClick={clearSearch}>
                     <FontAwesomeIcon icon={faTimes} className="clear-icon" />
