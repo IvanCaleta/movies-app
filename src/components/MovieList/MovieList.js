@@ -2,8 +2,10 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { getAllMoviesByGenre } from '../../API';
 import './MovieListStyle.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { noSearch, searchValue } from '../../redux/searchSlice';
 
-const SingleMovieItem = ({ movie, genreId, selected, handleMovieClick, index, movieRef }) => {
+export const SingleMovieItem = ({ movie, genreId, selected, handleMovieClick, index, movieRef }) => {
     const navigate = useNavigate();
 
     const additionalContent = <div className='extra-info'>
@@ -41,6 +43,8 @@ const MovieList = ({ genreId, isGenreSelected, setSelectedGenre, selectedMovie, 
     const [moviesArray, setMoviesArray] = useState([]);
     const [movieIndex, setMovieIndex] = useState(0);
     const movieRefs = useRef([]);
+    const currentSearchValue = useSelector(searchValue);
+    const noCurrentSearch = useSelector(noSearch);
 
     const handleMovieClick = (movieId, genreId, index) => {
         if (isGenreSelected) {
@@ -111,18 +115,26 @@ const MovieList = ({ genreId, isGenreSelected, setSelectedGenre, selectedMovie, 
     }, [genreId, isGenreSelected, setSelectedMovie, isManualSelection])
 
     return (
-        <div className="movie-list">
-            {moviesArray.map((movie, index) => (
-                <SingleMovieItem
-                    key={`${movie.id}-${genreId}`}
-                    genreId={genreId}
-                    selected={movie.id === selectedMovie && isGenreSelected}
-                    movie={movie}
-                    handleMovieClick={handleMovieClick}
-                    index={index}
-                    movieRef={(el) => (movieRefs.current[index] = el)}
-                />
-            ))}
+        <div>
+            {moviesArray.filter(item => noCurrentSearch ? true : item.title.toLowerCase().includes(currentSearchValue.toLowerCase())).length ?
+                <div className="movie-list">
+                    {moviesArray.filter(item => noCurrentSearch ? true : item.title.toLowerCase().includes(currentSearchValue.toLowerCase()))
+                        .map((movie, index) => (
+                            <SingleMovieItem
+                                key={`${movie.id}-${genreId}`}
+                                genreId={genreId}
+                                selected={movie.id === selectedMovie && isGenreSelected}
+                                movie={movie}
+                                handleMovieClick={handleMovieClick}
+                                index={index}
+                                movieRef={(el) => (movieRefs.current[index] = el)}
+                            />
+                        ))}
+                </div> :
+                <div className='no-found-container'>
+                    <div className='no-found'>No movies found</div>
+                </div>
+            }
         </div>
     )
 }
