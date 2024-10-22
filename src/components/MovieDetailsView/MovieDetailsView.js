@@ -9,7 +9,7 @@ import { faBookmark as RegularBookmark } from '@fortawesome/free-regular-svg-ico
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 const MovieDetailsView = ({ movieId }) => {
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [movieDetails, setMovieDetails] = useState({ loading: true });
   const isInFavorites = useSelector(checkFavorites(movieId));
   const [showVideo, setShowVideo] = useState(false);
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ const MovieDetailsView = ({ movieId }) => {
   }
 
   useEffect(() => {
+    setMovieDetails({ loading: true });
     getMovieDetails(movieId)
       .then((response) => {
         if (response.data) {
@@ -45,7 +46,7 @@ const MovieDetailsView = ({ movieId }) => {
 
   return (
     <div className="details-container">
-      {movieDetails ? (
+      {movieDetails !== null && !movieDetails.loading ? (
         <>
           <div className="details-section">
             <img
@@ -101,13 +102,13 @@ const MovieDetailsView = ({ movieId }) => {
           {showVideo && (
             <div className="video-section"
               ref={videoRef}>
-              <VideoPlayer movieId={movieId}/>
+              <VideoPlayer movieId={movieId} />
             </div>
           )}
         </>
       ) : (
         <div className='details-not-found'>
-          Movie details not found
+          {movieDetails?.loading ? "Loading details..." : "Movie details not found"}
         </div>
       )}
     </div>

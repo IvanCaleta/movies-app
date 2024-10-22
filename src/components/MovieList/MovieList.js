@@ -110,6 +110,9 @@ const MovieList = ({ genreId, isGenreSelected, setSelectedGenre, selectedMovie, 
                         setMovieIndex(0);
                     }
                 }
+            }).catch(error=>{
+                setMoviesArray([]);
+                console.error(error);
             })
         }
     }, [genreId, isGenreSelected, setSelectedMovie, isManualSelection])

@@ -4,3 +4,17 @@
     margin-top: 1em;
     text-align: center;
 }
+
+@media (min-width: 2560px) {
+    .splash-not-found {
+        font-size: 5em;
+        margin-top: 2em;
+    }
+}
+
+@media (min-width: 7680px) {
+    .splash-not-found {
+        font-size: 10em;
+        margin-top: 5em;
+    }
+}

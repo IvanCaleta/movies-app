@@ -59,7 +59,7 @@ const NavigationBar = ({ hideSearch, currentPage }) => {
                 className='search-input-container' >
                 <input
                     type='text'
-                    placeholder='Type movie name'
+                    placeholder='Type a movie name'
                     className='search-input'
                     value={currentSearchValue}
                     onChange={(e) => modifySearchValue(e.target.value)}

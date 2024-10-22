@@ -1,11 +1,39 @@
 .video-container {
-    position: relative;
-    width: 100%;
-    padding-top: 1em;
+  position: relative;
+  width: 100%;
+  padding-top: 1em;
+}
+
+video {
+  max-height: 30em;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 2560px) {
+  .video-container {
+    padding-top: 2em;
   }
 
   video {
-    max-height: 30em; 
-    width: 100%;
-    height: auto;
+    max-height: 60em;
+  }
+
+  video::-webkit-media-controls {
+    zoom: 2.2;
+  }
+}
+
+@media (min-width: 7680px) {
+  .video-container {
+    padding-top: 5em;
+  }
+
+  video {
+    max-height: 130em;
+  }
+
+  video::-webkit-media-controls {
+    zoom: 4.2;
+  }
 }

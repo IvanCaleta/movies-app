@@ -1,16 +1,16 @@
 .genre-rails {
-    margin-top: 30px;
-    padding: 10px;
+    margin-top: 2rem;
+    padding: 1rem;
     max-width: 100%;
     overflow-y: auto;
 }
 
 .genre-section {
-    margin-bottom: 100px;
+    margin-bottom: 6rem;
 }
 
 .genre-item {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .genre {
@@ -18,10 +18,10 @@
     color: white;
     border: 1px solid #555;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     cursor: pointer;
     text-align: center;
-    font-size: 1.5em; 
+    font-size: 1.5rem; 
     width: 100%; 
 }
 
@@ -35,14 +35,44 @@
 }
 
 .genre.selected {
-    background-color: #b7eb3ee2 ; 
+    background-color: #b7eb3ee2; 
     font-weight: bold;
     color: black;
 }
 
-.genres-not-loaded{
+.genres-not-loaded {
     color: #f5f5f5;
-    font-size: 2em;
-    margin-top: 1em;
+    font-size: 2rem;
+    margin-top: 1rem;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .genre {
+        font-size: 1.2rem; 
+    }
+
+    .genres-not-loaded {
+        font-size: 1.5rem; 
+    }
+}
+
+@media (min-width: 2560px) {
+    .genre {
+        font-size: 3.5rem; 
+    }
+
+    .genres-not-loaded {
+        font-size: 3.5rem; 
+    }
+}
+
+@media (min-width: 7680px) {
+    .genre {
+        font-size: 8rem; 
+    }
+
+    .genres-not-loaded {
+        font-size: 6rem; 
+    }
 }
